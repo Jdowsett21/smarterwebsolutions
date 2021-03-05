@@ -27,14 +27,6 @@ function ContactForm({
     message: Yup.string().required('Message is required'),
   });
 
-  useEffect(() => {
-    emailFailure &&
-      toast.error('Contact Form Was Not Sent !', {
-        position: toast.POSITION.TOP_LEFT,
-      });
-    contactRedirect && router.push('/contactSuccess');
-  }, [emailFailure, contactRedirect]);
-
   return (
     <>
       {}
