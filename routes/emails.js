@@ -50,7 +50,7 @@ router.post('/email', async (req, res) => {
     if (error) {
       res.send(error); // Show a page indicating failure
     } else {
-      res.send('contact-success'); // Show a page indicating success
+      res.send(response); // Show a page indicating success
     }
   });
 });
