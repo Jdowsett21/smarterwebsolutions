@@ -3,6 +3,7 @@ const router = express.Router();
 const nodemailer = require('nodemailer');
 
 router.post('/email', async (req, res) => {
+  console.log(req.body.url.split('/')[1]);
   const smtpTrans = nodemailer.createTransport({
     host: 'smarterwebsolutions-ca.mail.protection.outlook.com',
     port: 25,
@@ -20,8 +21,8 @@ router.post('/email', async (req, res) => {
     from: 'James | Smarter Web Solutions',
     to: req.body.email,
     subject: `${req.body.firmName} | Expert Website Review`,
-
-    //   html: `<div class="heading-section">
+    text: 'hello',
+    // html: `<div class="heading-section">
 
     //   <img src="../client/public/img/Company.png" alt="image" class="image" />
     // </div>
@@ -29,7 +30,7 @@ router.post('/email', async (req, res) => {
     // <h1 class="title-text">${req.body.firmName} | Expert Website Review</h1>
     // </div>
     // <div class="video-section">
-    // <iframe width="560" height="315" src=${req.body.url} class='video frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    // <img src="https://img.youtube.com/vi/${req.body.url}/0.jpg" alt="image" class="image" />
     // </div>
     // <div class='text-section><p class='text'>
     // Hi ${req.body.firstName},
@@ -47,12 +48,7 @@ router.post('/email', async (req, res) => {
   // Attempt to send the email
   smtpTrans.sendMail(mailOpts, (error, response) => {
     if (error) {
-      console.log(
-        '🚀 ~ file: emails.js ~ line 54 ~ smtpTrans.sendMail ~ error',
-        error
-      );
-
-      res.send('contact-failure'); // Show a page indicating failure
+      res.send(error); // Show a page indicating failure
     } else {
       res.send('contact-success'); // Show a page indicating success
     }
