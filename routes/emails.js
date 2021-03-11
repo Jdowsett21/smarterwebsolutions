@@ -3,7 +3,7 @@ const router = express.Router();
 const nodemailer = require('nodemailer');
 
 router.post('/email', async (req, res) => {
-  console.log(req.body.url.split('/')[1]);
+  console.log(req.body.url.split('/')[2]);
   const smtpTrans = nodemailer.createTransport({
     host: 'smarterwebsolutions-ca.mail.protection.outlook.com',
     port: 25,
@@ -18,7 +18,7 @@ router.post('/email', async (req, res) => {
   });
 
   const mailOpts = {
-    from: 'James | Smarter Web Solutions',
+    from: 'contact@smarterwebsolutions.ca',
     to: req.body.email,
     subject: `${req.body.firmName} | Expert Website Review`,
     text: 'hello',
