@@ -13,6 +13,9 @@ import {
 import { publicFetch } from '../utils/publicFetch';
 import FormData from 'form-data';
 
+export const setEmailInfo = (info) => async (dispatch) => {
+  const { data } = await publicFetch.post(`/emails/email`, info);
+};
 export const submitEmail = (info) => async (dispatch) => {
   try {
     const { data } = await publicFetch.post('/emails', info);
