@@ -27,6 +27,16 @@ module.exports = function (app) {
         }
       );
     });
+    app.get('/emails', (req, res) => {
+      res.sendFile(
+        path.resolve(__dirname, '../client', 'out', 'services.html'),
+        function (err) {
+          if (err) {
+            res.status(500).send(err);
+          }
+        }
+      );
+    });
     app.get('/technical', (req, res) => {
       res.sendFile(
         path.resolve(__dirname, '../client', 'out', 'technical.html'),
