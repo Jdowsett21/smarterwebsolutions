@@ -29,7 +29,7 @@ module.exports = function (app) {
     });
     app.get('/emails', (req, res) => {
       res.sendFile(
-        path.resolve(__dirname, '../client', 'out', 'services.html'),
+        path.resolve(__dirname, '../client', 'out', 'emails.html'),
         function (err) {
           if (err) {
             res.status(500).send(err);
